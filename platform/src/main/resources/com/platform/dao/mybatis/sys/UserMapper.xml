@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.platform.dao.UserDao">
+
+	<sql id="baseColumn">
+		T.ID AS id,
+		T.USER_NAME AS userName, 
+		T.PASSWORD AS password,
+		T.PERSON_NAME AS personName,
+		T.EMAIL AS email,
+		T.PHONE AS phone,
+		T.ADDRESS AS address,
+		T.REG_TIME AS regTime,
+		T.STATUS AS statusId,
+		T.CREATE_ID AS createId,
+		T.CREATE_DATE AS createDate,
+		T.UPDATE_ID AS updateId,
+		T.UPDATE_DATE AS updateDate
+	</sql>
+	
+	<select id="getUsers" resultType="com.platform.model.entity.sys.User">
+		SELECT 
+			<include refid="baseColumn"/>
+		FROM GXUser T
+	</select>
+	
+	<insert id="insert" parameterType="com.platform.model.entity.sys.User">
+		INSERT INTO GXUser(
+			USER_NAME,
+			PASSWORD,
+			PERSON_NAME,
+			EMAIL,
+			PHONE,
+			ADDRESS,
+			REG_TIME,
+			STATUS,
+			CREATE_ID,
+			CREATE_DATE,
+			UPDATE_ID,
+			UPDATE_DATE
+		)VALUES(
+			#{userName},
+			#{password},
+			#{personName},
+			#{email},
+			#{phone},
+			#{address},
+			CURRENT_TIMESTAMP,
+			#{statusId},
+			#{createId},
+			CURRENT_TIMESTAMP,
+			#{createId},
+			CURRENT_TIMESTAMP
+		)
+	</insert>
+	<update id="update" parameterType="com.platform.model.entity.sys.User">
+		UPDATE GXUser SET 
+			<if test="null != userName">USER_NAME = #{userName},</if>
+			<if test="null != password">PASSWORD = #{password},</if>
+			<if test="null != personName">PERSON_NAME = #{personName},</if>
+			<if test="null != email">EMAIL = #{email},</if>
+			<if test="null != phone">PHONE = #{phone},</if>
+			<if test="null != address">ADDRESS = #{address},</if>
+			<if test="null != statusId">STATUS = #{statusId},</if>
+			<if test="null != updateId">UPDATE_ID = #{updateId},</if>
+			REG_TIME = CURRENT_TIMESTAMP,
+			UPDATE_DATE = CURRENT_TIMESTAMP
+		WHERE ID = #{id}
+	</update>
+	
+	<delete id="deleteById" parameterType="String">
+		DELETE FROM GXUser WHERE ID = #{id}
+	</delete>
+</mapper>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.platform.dao.sys.CompanyDao">
+
+	<sql id="selectSql">
+		SELECT 
+			ID AS id,
+			CODE AS code,
+			NAME AS name,
+			CREATE_ID AS createId,
+			CREATE_DATE AS createDate,
+			UPDATE_ID AS updateId,
+			UPDATE_DATE AS updateDate
+		FROM gx_company 
+		WHERE 1=1
+	</sql>
+	
+	
+	<select id="getById" parameterType="String" resultType="com.platform.model.dto.sys.CompanyDTO">
+		<include refid="selectSql"/>
+		AND ID = #{id, jdbcType=VARCHAR}
+	</select>
+	
+	<select id="getByCode" parameterType="String" resultType="com.platform.model.dto.sys.CompanyDTO">
+		<include refid="selectSql"/>
+		AND CODE = #{code, jdbcType=VARCHAR}
+	</select>
+	
+	<select id="getByName" parameterType="String" resultType="com.platform.model.dto.sys.CompanyDTO">
+		<include refid="selectSql"/>
+		AND NAME = #{name, jdbcType=VARCHAR}
+	</select>
+	
+	<select id="getCompanysCount" parameterType="com.platform.model.filter.sys.CompanyFilter" resultType="int">
+		<include refid="selectSql"/>
+	</select>
+	
+	<select id="getCompanys" parameterType="com.platform.model.filter.sys.CompanyFilter" resultType="com.platform.model.dto.sys.CompanyDTO">
+		<include refid="selectSql"/>
+	</select>
+	
+	<insert id="insert" parameterType="com.platform.model.entity.sys.Company">
+		INSERT INTO gx_company(
+			ID,
+			CODE,
+			NAME,
+			CREATE_ID,
+			CREATE_DATE,
+			UPDATE_ID,
+			UPDATE_DATE
+		)VALUES(
+			#{id},#{code},#{name},#{createId},
+			CURRENT_TIMESTAMP,#{createId},CURRENT_TIMESTAMP
+		)
+	</insert>
+	
+	<update id="update" parameterType="com.platform.model.entity.sys.Company">
+		UPDATE gx_company SET
+			<if test="null != code"> CODE = #{code},</if>
+			<if test="null != name"> NAME = #{name},</if>
+			<if test="null != updateId">UPDATE_ID = #{updateId},</if>
+			UPDATE_DATE = CURRENT_TIMESTAMP
+		WHERE ID = #{id, jdbcType=VARCHAR}
+	</update>
+</mapper>
