@@ -12,7 +12,7 @@
 			CREATE_DATE AS createDate,
 			UPDATE_ID AS updateId,
 			UPDATE_DATE AS updateDate
-		FROM gx_company 
+		FROM GX_COMPANY 
 		WHERE 1=1
 	</sql>
 	
@@ -41,7 +41,7 @@
 	</select>
 	
 	<insert id="insert" parameterType="com.platform.model.entity.sys.Company">
-		INSERT INTO gx_company(
+		INSERT INTO GX_COMPANY(
 			ID,
 			CODE,
 			NAME,
@@ -56,7 +56,7 @@
 	</insert>
 	
 	<update id="update" parameterType="com.platform.model.entity.sys.Company">
-		UPDATE gx_company SET
+		UPDATE GX_COMPANY SET
 			<if test="null != code"> CODE = #{code},</if>
 			<if test="null != name"> NAME = #{name},</if>
 			<if test="null != updateId">UPDATE_ID = #{updateId},</if>

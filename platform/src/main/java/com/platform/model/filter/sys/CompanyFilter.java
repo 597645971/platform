@@ -1,5 +1,7 @@
 package com.platform.model.filter.sys;
 
-public class CompanyFilter {
+import com.platform.model.filter.base.BaseFilter;
+
+public class CompanyFilter extends BaseFilter {
 
 }
