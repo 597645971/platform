@@ -19,4 +19,5 @@ public class Company extends BasePOJO {
 	
 	private String name;
 
+	
 }

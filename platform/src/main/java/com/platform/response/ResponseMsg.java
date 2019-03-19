@@ -3,6 +3,11 @@ package com.platform.response;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonView;
+
+@JsonInclude(Include.NON_NULL)
 public class ResponseMsg {
 
 	public enum ResponseCode{
@@ -43,6 +48,7 @@ public class ResponseMsg {
 		this.msg = msg;
 	}
 
+	@JsonView(BaseView.class)
 	public Object getData() {
 		return data;
 	}
@@ -51,6 +57,7 @@ public class ResponseMsg {
 		this.data = data;
 	}
 
+	@JsonView(BaseView.class)
 	public List<Map<String, Object>> getErrList() {
 		return errList;
 	}

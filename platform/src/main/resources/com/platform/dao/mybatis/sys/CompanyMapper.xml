@@ -32,12 +32,6 @@
 		AND NAME = #{name, jdbcType=VARCHAR}
 	</select>
 	
-	<select id="getCompanysCount" parameterType="com.platform.model.filter.sys.CompanyFilter" resultType="int">
-		SELECT COUNT(1) FROM (
-			<include refid="selectSql"/>
-		) T
-	</select>
-	
 	<select id="getCompanys" parameterType="com.platform.model.filter.sys.CompanyFilter" resultType="com.platform.model.dto.sys.CompanyDTO">
 		<include refid="selectSql"/>
 	</select>

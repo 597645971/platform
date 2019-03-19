@@ -30,13 +30,6 @@ public interface CompanyDao {
 	CompanyDTO getByName(String name);
 	
 	/**
-	 * 查询公司数量
-	 * @param filter
-	 * @return
-	 */
-	int getCompanysCount(CompanyFilter filter);
-	
-	/**
 	 * 查询公司列表
 	 * @param filter
 	 * @return

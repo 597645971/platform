@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.platform.constant.ResponseConstant;
 import com.platform.model.dto.sys.CompanyDTO;
 import com.platform.model.filter.base.BaseFilter;
 import com.platform.model.filter.sys.CompanyFilter;
@@ -28,7 +29,7 @@ public class CompanyController {
 		
 		
 		BaseFilter baseFilter = filter;
-		PageResponseMsg response = new PageResponseMsg(ResponseCode.SUCCESS, "操作成功", baseFilter);
+		PageResponseMsg response = new PageResponseMsg(ResponseCode.SUCCESS, ResponseConstant.SUCCESS, baseFilter);
 		response.setData(companys);
 		return response;
 	}

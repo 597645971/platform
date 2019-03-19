@@ -2,6 +2,11 @@ package com.platform.model.dto.sys;
 
 import com.platform.model.entity.sys.User;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class UserDTO extends User {
 
 	/**
@@ -15,29 +20,4 @@ public class UserDTO extends User {
 	
 	private String updateName;
 
-	public String getStatusName() {
-		return statusName;
-	}
-
-	public void setStatusName(String statusName) {
-		this.statusName = statusName;
-	}
-
-	public String getCreateName() {
-		return createName;
-	}
-
-	public void setCreateName(String createName) {
-		this.createName = createName;
-	}
-
-	public String getUpdateName() {
-		return updateName;
-	}
-
-	public void setUpdateName(String updateName) {
-		this.updateName = updateName;
-	}
-	
-	
 }
