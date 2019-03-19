@@ -42,7 +42,7 @@ public class CompanyServiceImpl implements CompanyService {
 	@Override
 	public List<CompanyDTO> getCompanys(CompanyFilter filter) {
 
-		return new BaseServiceUtil<CompanyDTO, CompanyFilter>().list(f -> companyDao.getCompanysCount(f), f -> companyDao.getCompanys(f), filter);
+		return companyDao.getCompanys(filter);
 	}
 
 	@Override

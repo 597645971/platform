@@ -23,6 +23,7 @@ public class CompanyController {
 	
 	@GetMapping
 	public PageResponseMsg list(CompanyFilter filter) {
+//		filter.setRows(BaseFilter.MAX_ROWS);
 		List<CompanyDTO> companys = companyService.getCompanys(filter);
 		
 		
