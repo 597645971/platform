@@ -1,15 +1,17 @@
 package com.platform.controller.sys;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.platform.model.dto.sys.CompanyDTO;
+import com.platform.model.filter.base.BaseFilter;
 import com.platform.model.filter.sys.CompanyFilter;
-import com.platform.pager.Pager;
-import com.platform.pager.ResponseMsg;
-import com.platform.pager.ResponseMsg.ResponseRet;
+import com.platform.response.PageResponseMsg;
+import com.platform.response.ResponseMsg.ResponseCode;
 import com.platform.service.sys.CompanyService;
 
 @RestController
@@ -20,9 +22,13 @@ public class CompanyController {
 	private CompanyService companyService;
 	
 	@GetMapping
-	public ResponseMsg list(CompanyFilter filter, Pager pager) {
-		Object object = null;
-		companyService.getCompanys(filter);
-		return new ResponseMsg(ResponseRet.SUCCESS, "操作成功", object);
+	public PageResponseMsg list(CompanyFilter filter) {
+		List<CompanyDTO> companys = companyService.getCompanys(filter);
+		
+		
+		BaseFilter baseFilter = filter;
+		PageResponseMsg response = new PageResponseMsg(ResponseCode.SUCCESS, "操作成功", baseFilter);
+		response.setData(companys);
+		return response;
 	}
 }

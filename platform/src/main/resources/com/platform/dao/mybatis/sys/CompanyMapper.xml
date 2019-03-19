@@ -6,8 +6,8 @@
 	<sql id="selectSql">
 		SELECT 
 			ID AS id,
-			CODE AS code,
-			NAME AS name,
+			CODE AS "code",
+			NAME AS "name",
 			CREATE_ID AS createId,
 			CREATE_DATE AS createDate,
 			UPDATE_ID AS updateId,
@@ -33,7 +33,9 @@
 	</select>
 	
 	<select id="getCompanysCount" parameterType="com.platform.model.filter.sys.CompanyFilter" resultType="int">
-		<include refid="selectSql"/>
+		SELECT COUNT(1) FROM (
+			<include refid="selectSql"/>
+		) T
 	</select>
 	
 	<select id="getCompanys" parameterType="com.platform.model.filter.sys.CompanyFilter" resultType="com.platform.model.dto.sys.CompanyDTO">
