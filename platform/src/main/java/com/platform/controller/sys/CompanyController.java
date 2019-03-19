@@ -14,6 +14,7 @@ public class CompanyController {
 
 	public ResponseMsg list(CompanyFilter filter, Pager pager) {
 		Object object = null;
+		
 		return new ResponseMsg(ResponseRet.SUCCESS, "操作成功", object);
 	}
 }
