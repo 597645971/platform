@@ -1,4 +1,4 @@
-package com.platform.constant;
+package com.platform.constant.response;
 
 public class ResponseConstant {
 

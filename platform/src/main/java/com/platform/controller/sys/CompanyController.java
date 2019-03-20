@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.platform.constant.ResponseConstant;
+import com.platform.constant.response.ResponseConstant;
 import com.platform.model.dto.sys.CompanyDTO;
 import com.platform.model.filter.base.BaseFilter;
 import com.platform.model.filter.sys.CompanyFilter;

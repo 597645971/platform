@@ -1,11 +1,13 @@
 package com.platform.service.sys.impl;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.platform.constant.table.TableNameConstant;
 import com.platform.dao.sys.CompanyDao;
 import com.platform.model.dto.sys.CompanyDTO;
 import com.platform.model.entity.sys.Company;
@@ -46,7 +48,7 @@ public class CompanyServiceImpl implements CompanyService {
 
 	@Override
 	public void insert(Company company) {
-
+		company.setId(TableNameConstant.GX_COMPANY + UUID.randomUUID().toString());
 		companyDao.insert(company);
 	}
 

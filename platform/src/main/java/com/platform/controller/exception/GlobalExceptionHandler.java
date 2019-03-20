@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.platform.constant.ResponseConstant;
+import com.platform.constant.response.ResponseConstant;
 import com.platform.model.common.SystemException;
 import com.platform.response.ResponseMsg;
 import com.platform.response.ResponseMsg.ResponseCode;
