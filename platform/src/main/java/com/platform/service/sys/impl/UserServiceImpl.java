@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.platform.dao.sys.UserDao;
 import com.platform.model.entity.sys.User;
+import com.platform.model.filter.sys.UserFilter;
 import com.platform.service.sys.UserService;
 
 @Service
@@ -17,9 +18,9 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDao userDao;
 	
-	public List<User> getUsers() {
+	public List<User> getUsers(UserFilter filter) {
 
-		return userDao.getUsers();
+		return userDao.getUsers(filter);
 	}
 
 	public void insert(User user) {

@@ -17,8 +17,6 @@ public class BasePOJO implements Serializable {
 
 	private String id;
 	
-	private String status;
-	
 	private String createId;
 	
 	private Date createDate;

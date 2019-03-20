@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50519
 File Encoding         : 65001
 
-Date: 2019-03-19 23:20:57
+Date: 2019-03-20 23:19:50
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -37,16 +37,16 @@ INSERT INTO `gx_company` VALUES ('1', 'SH', '上海', '1', '2019-03-19 22:26:55'
 INSERT INTO `gx_company` VALUES ('2', '2', '2', '1', '2019-03-19 22:27:44', '1', '2019-03-19 22:27:47');
 
 -- ----------------------------
--- Table structure for gx_menu
+-- Table structure for gx_function
 -- ----------------------------
-DROP TABLE IF EXISTS `gx_menu`;
-CREATE TABLE `gx_menu` (
+DROP TABLE IF EXISTS `gx_function`;
+CREATE TABLE `gx_function` (
   `ID` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `PARENT_ID` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `NAME` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `URL` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `STATUS` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `CEATE_ID` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `STATUS_ID` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `CREATE_ID` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `CREATE_DATE` datetime DEFAULT NULL,
   `UPDATE_ID` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `UPDATE_DATE` datetime DEFAULT NULL,
@@ -54,25 +54,25 @@ CREATE TABLE `gx_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
--- Records of gx_menu
+-- Records of gx_function
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for gx_menu_role
+-- Table structure for gx_function_role
 -- ----------------------------
-DROP TABLE IF EXISTS `gx_menu_role`;
-CREATE TABLE `gx_menu_role` (
+DROP TABLE IF EXISTS `gx_function_role`;
+CREATE TABLE `gx_function_role` (
   `ROLE_ID` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `MENU_ID` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `FUNCTION_ID` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `CREATE_ID` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `CREATE_DATE` datetime DEFAULT NULL,
   `UPDATE_ID` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `UPDATE_DATE` datetime DEFAULT NULL,
-  PRIMARY KEY (`ROLE_ID`,`MENU_ID`)
+  PRIMARY KEY (`ROLE_ID`,`FUNCTION_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
--- Records of gx_menu_role
+-- Records of gx_function_role
 -- ----------------------------
 
 -- ----------------------------
@@ -85,7 +85,7 @@ CREATE TABLE `gx_role` (
   `ROLE_CODE` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ROLE_DESC` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `COMPANY_ID` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `STATUS` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `STATUS_ID` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `CREATE_ID` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `CREATE_DATE` datetime DEFAULT NULL,
   `UPDATE_ID` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -113,7 +113,7 @@ CREATE TABLE `gx_user` (
   `USER_TYPE` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `REG_TIME` datetime DEFAULT NULL,
   `COMAPNY_ID` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `STATUS` varchar(1) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `STATUS_ID` varchar(1) COLLATE utf8_unicode_ci DEFAULT NULL,
   `CREATE_ID` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `CREATE_DATE` datetime DEFAULT NULL,
   `UPDATE_ID` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,

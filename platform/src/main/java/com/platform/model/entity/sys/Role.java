@@ -22,5 +22,6 @@ public class Role extends BasePOJO {
 	
 	private String companyId;
 
+	private String statusId;
 
 }

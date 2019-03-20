@@ -19,5 +19,5 @@ public class Company extends BasePOJO {
 	
 	private String name;
 
-	
+	private String statusId;
 }

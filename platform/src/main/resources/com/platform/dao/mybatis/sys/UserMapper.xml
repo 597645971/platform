@@ -11,30 +11,34 @@
 		T.EMAIL AS email,
 		T.PHONE AS phone,
 		T.ADDRESS AS address,
+		T.USER_TYPE AS userType,
 		T.REG_TIME AS regTime,
-		T.STATUS AS statusId,
+		T.COMAPNY_ID AS companyId,
+		T.STATUS_ID AS statusId,
 		T.CREATE_ID AS createId,
 		T.CREATE_DATE AS createDate,
 		T.UPDATE_ID AS updateId,
 		T.UPDATE_DATE AS updateDate
 	</sql>
 	
-	<select id="getUsers" resultType="com.platform.model.entity.sys.User">
+	<select id="getUsers" parameterType="com.platform.model.filter.sys.UserFilter" resultType="com.platform.model.entity.sys.User">
 		SELECT 
 			<include refid="baseColumn"/>
 		FROM GXUser T
 	</select>
 	
 	<insert id="insert" parameterType="com.platform.model.entity.sys.User">
-		INSERT INTO GXUser(
+		INSERT INTO gx_user(
 			USER_NAME,
 			PASSWORD,
 			PERSON_NAME,
 			EMAIL,
 			PHONE,
 			ADDRESS,
+			USER_TYPE，
 			REG_TIME,
-			STATUS,
+			COMAPNY_ID，
+			STATUS_ID,
 			CREATE_ID,
 			CREATE_DATE,
 			UPDATE_ID,
@@ -46,7 +50,9 @@
 			#{email},
 			#{phone},
 			#{address},
+			#{userType}，
 			CURRENT_TIMESTAMP,
+			#{companyId},
 			#{statusId},
 			#{createId},
 			CURRENT_TIMESTAMP,
@@ -55,14 +61,15 @@
 		)
 	</insert>
 	<update id="update" parameterType="com.platform.model.entity.sys.User">
-		UPDATE GXUser SET 
+		UPDATE gx_user SET 
 			<if test="null != userName">USER_NAME = #{userName},</if>
 			<if test="null != password">PASSWORD = #{password},</if>
 			<if test="null != personName">PERSON_NAME = #{personName},</if>
 			<if test="null != email">EMAIL = #{email},</if>
 			<if test="null != phone">PHONE = #{phone},</if>
 			<if test="null != address">ADDRESS = #{address},</if>
-			<if test="null != statusId">STATUS = #{statusId},</if>
+			<if test="null != userType">USER_TYPE = #{userType},</if>
+			<if test="null != statusId">STATUS_ID = #{statusId},</if>
 			<if test="null != updateId">UPDATE_ID = #{updateId},</if>
 			REG_TIME = CURRENT_TIMESTAMP,
 			UPDATE_DATE = CURRENT_TIMESTAMP
@@ -70,6 +77,6 @@
 	</update>
 	
 	<delete id="deleteById" parameterType="String">
-		DELETE FROM GXUser WHERE ID = #{id}
+		DELETE FROM gx_user WHERE ID = #{id}
 	</delete>
 </mapper>

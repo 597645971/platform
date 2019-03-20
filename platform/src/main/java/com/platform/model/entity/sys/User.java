@@ -35,5 +35,5 @@ public class User extends BasePOJO {
 	
 	private int comapnyId;
 
-	
+	private String statusId;
 }
