@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 public class ResponseMsg {
 
 	public enum ResponseCode{
-		SUCCESS("1"),ERROR("0"),NOTLOGIN("2");
+		SUCCESS("1"),ERROR("0"),NOTLOGIN("2"),WARN("3");
 		
 		private String value;
 
@@ -79,10 +79,9 @@ public class ResponseMsg {
 		this.data = data;
 	}
 
-	public ResponseMsg(ResponseCode code, String msg, List<Map<String, Object>> errList) {
+	public ResponseMsg(ResponseCode code, List<Map<String, Object>> errList) {
 		super();
 		this.code = code;
-		this.msg = msg;
 		this.errList = errList;
 	}
 
